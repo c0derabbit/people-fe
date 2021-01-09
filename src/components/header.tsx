@@ -1,20 +1,42 @@
+import styled from 'styled-components'
+
 import useAuth from '../hooks/use-auth'
+import { Button, Container } from '../styled'
 
 export default function Header() {
   const { isSignedIn, signOut } = useAuth()
 
   return (
-    <header>
-      <div>
-        <h1>
+    <StyledHeader>
+      <Container>
+        <Title>
           Peoplegraph
-        </h1>
+        </Title>
         {isSignedIn && (
-          <button onClick={signOut}>
+          <Button onClick={signOut}>
             Log out
-          </button>
+          </Button>
         )}
-      </div>
-    </header>
+      </Container>
+    </StyledHeader>
   )
 }
+
+const StyledHeader = styled.header`
+  border-bottom: 3px solid;
+
+  ${Container} {
+    height: 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+`
+
+const Title = styled.h1`
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: .2px;
+  text-transform: uppercase;
+`
