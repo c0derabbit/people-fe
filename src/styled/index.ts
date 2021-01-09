@@ -34,13 +34,20 @@ export const Button = styled.button`
   }
 `
 
+export const Card = styled.div<{ small?: boolean }>`
+  ${buttonlike}
+  background: var(--lighter-accent);
+  padding: ${({ small }) => gap / (small ? 2 : 1)}px;
+  border: 3px solid;
+`
+
 export const Container = styled.div`
   max-width: ${pageSize}px;
   margin: 0 auto;
   padding: 0 ${gap}px;
 `
 
-export const Grid = styled.div`
+export const Grid = styled.div<{ cols?: number }>`
   list-style: none;
   padding: 0;
 
@@ -48,7 +55,7 @@ export const Grid = styled.div`
   gap: ${gap}px;
 
   @media (min-width: ${screen.md}px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(${({cols}) => cols || 3}, 1fr);
   }
 `
 

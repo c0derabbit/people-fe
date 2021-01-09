@@ -5,3 +5,8 @@
   --light-accent: lavender;
   --lighter-accent: #f7f7fd;
 }
+
+:root a {
+  text-decoration: none;
+  color: inherit;
+}

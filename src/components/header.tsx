@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 
 import useAuth from '../hooks/use-auth'
@@ -10,7 +11,7 @@ export default function Header() {
     <StyledHeader>
       <Container>
         <Title>
-          Peoplegraph
+          <Link href="/"><a>Peoplegraph</a></Link>
         </Title>
         {isSignedIn && (
           <Button onClick={signOut}>
