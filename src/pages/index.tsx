@@ -7,7 +7,7 @@ import { Person } from '../types'
 
 export const Home: React.FC<{ people: Person[] }> = ({ people = [] }) => {
   const { isSignedIn, signIn } = useAuth()
-  const { sort } = useSortSearch()
+  const { sort, filter } = useSortSearch()
 
   //console.log({ people })
 
@@ -16,7 +16,7 @@ export const Home: React.FC<{ people: Person[] }> = ({ people = [] }) => {
       <>
         <SortSearchHeader />
         <Grid as="ul">
-          {sort(people).map((person: Person) => (
+          {sort(filter(people)).map((person: Person) => (
             <PersonCard key={person.id} {...person} />
           ))}
         </Grid>

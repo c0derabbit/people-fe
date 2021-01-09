@@ -2,10 +2,10 @@ import { useCallback } from 'react'
 import styled from 'styled-components'
 
 import useSortSearch from '../hooks/use-sort-search'
-import { gap } from '../styled'
+import { Field, gap } from '../styled'
 
 export default function SortSearchHeader() {
-  const { reverse, setSorter, setReverse } = useSortSearch()
+  const { reverse, setSorter, setReverse, setSearch } = useSortSearch()
 
   const sort = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
     setSorter(e.target.value)
@@ -19,7 +19,11 @@ export default function SortSearchHeader() {
 
   return (
     <Header>
-      <input type="text" placeholder="Search…" />
+      <Field
+        type="text"
+        placeholder="Search…"
+        onChange={e => setSearch(e.target.value)}
+      />
       <select
         onChange={sort}
       >
