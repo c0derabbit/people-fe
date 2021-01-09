@@ -36,11 +36,10 @@ export const Home: React.FC<{ people: Person[] }> = ({ people = [] }) => {
 }
 
 export async function getServerSideProps() {
-  const people = [
-    { id: '1', name: 'X. Y.' },
-    { id: '2', name: 'Y. Z.' },
-  ]
- 
+  const apiUrl= 'https://people-api-2020.herokuapp.com/people/'
+  const data = await fetch(apiUrl)
+  const people = await data.json()
+
   return { props: { people } }
 }
 

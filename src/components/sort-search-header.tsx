@@ -12,7 +12,10 @@ export default function SortSearchHeader() {
     setReverse(false)
   }, [])
 
-  const sortOptions = ['id', 'name']
+  const sortOptions = [
+    { label: 'name', value: 'props.name' },
+    { label: 'id', value: 'id' },
+  ]
 
   return (
     <Header>
@@ -20,7 +23,7 @@ export default function SortSearchHeader() {
       <select
         onChange={sort}
       >
-        {sortOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+        {sortOptions.map(({ label, value })=> <option key={value} value={value}>{label}</option>)}
       </select>
       <label>
         reverse
