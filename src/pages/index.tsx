@@ -1,21 +1,15 @@
 import Head from 'next/head'
-import { useCallback } from 'react'
 import { Button, Pane } from 'evergreen-ui'
 
 import useAuth from '../hooks/use-auth'
 import useSortSearch from '../hooks/use-sort-search'
-import Header from '../components/header'
-import PersonCard, { Person } from '../components/person-card'
 import { gap, pageWidth } from '../styles/settings'
+import { Header, PersonCard, SortSearchHeader } from '../components'
+import { Person } from '../types'
 
 export const Home: React.FC<{ people: Person[] }> = ({ people = [] }) => {
   const { isSignedIn, signIn } = useAuth()
-  const { sortedItems, reverse, setSorter, setReverse } = useSortSearch(people)
-
-  const sort = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSorter(e.target.value)
-    setReverse(false)
-  }, [])
+  const { sort } = useSortSearch()
 
   return (
     <>
@@ -28,21 +22,16 @@ export const Home: React.FC<{ people: Person[] }> = ({ people = [] }) => {
         {isSignedIn
           ? (
             <>
-              <select onChange={sort}>
-                <option value="id">id</option>
-              </select>
-              <label>
-                <input
-                  type="checkbox"
-                  onChange={() => {
-                    setReverse(!reverse)
-                  }}
-                  checked={reverse}
-                />
-                reverse
-              </label>
-              <Pane is="ul" padding={0} listStyle="none">
-                {sortedItems.map((person: Person) => (
+              <SortSearchHeader />
+              <Pane
+                is="ul"
+                padding={0}
+                listStyle="none"
+                display="grid"
+                gap={20}
+                gridTemplateColumns="repeat(3, 1fr)"
+              >
+                {sort(people).map((person: Person) => (
                   <PersonCard key={person.id} {...person} />
                 ))}
               </Pane>

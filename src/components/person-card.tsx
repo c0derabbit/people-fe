@@ -1,14 +1,12 @@
-export interface Person {
-  id: string;
-  name: string;
-}
+import { Pane } from 'evergreen-ui'
+import { Person } from '../types'
 
 const PersonCard: React.FC<Person> = ({
   name,
 }) => (
-  <li>
+  <Pane is="li" elevation={1}>
     {name}
-  </li>
+  </Pane>
 )
 
 export default PersonCard

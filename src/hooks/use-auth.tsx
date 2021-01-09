@@ -85,6 +85,5 @@ export const AuthProvider = ({ children }) => {
 }
 
 export default function useAuth() {
-  const { signIn, signOut, isSignedIn } = useContext(GoogleAuthContext)
-  return { signIn, signOut, isSignedIn }
+  return useContext(GoogleAuthContext)
 }

@@ -25,19 +25,72 @@ exports[`Home page matches snapshot 1`] = `
   <main
     class="css-nil ub-pl_16px ub-pr_16px ub-pb_70px ub-pt_70px ub-max-w_1200px ub-ml_auto ub-mr_auto ub-box-szg_border-box"
   >
-    <select>
-      <option
-        value="id"
+    <div
+      class="css-nil ub-dspl_flex ub-box-szg_border-box"
+    >
+      <div
+        class="ub-pst_relative ub-dspl_inline-flex ub-h_32px ub-box-szg_border-box"
       >
-        id
-      </option>
-    </select>
-    <label>
-      <input
-        type="checkbox"
-      />
-      reverse
-    </label>
+        <div
+          class="ub-h_32px ub-w_32px ub-ptr-evts_none ub-pst_absolute ub-dspl_flex ub-just-cnt_center ub-algn-itms_center ub-box-szg_border-box"
+        >
+          <svg
+            class="ub-z-idx_3 ub-w_12px ub-h_12px ub-box-szg_border-box"
+            data-icon="search"
+            style="fill: #66788A;"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M15.55 13.43l-2.67-2.68a6.94 6.94 0 001.11-3.76c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.39 0 2.68-.42 3.76-1.11l2.68 2.67a1.498 1.498 0 102.12-2.12zm-8.56-1.44c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </div>
+        <input
+          aria-invalid="false"
+          class="css-5ljhhe ub-color_425A70 ub-fnt-fam_b77syt ub-fnt-sze_12px ub-f-wght_400 ub-ln-ht_16px ub-ltr-spc_0 ub-w_280px ub-h_32px ub-pl_32px ub-pr_10px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-box-szg_border-box"
+          placeholder="Search…"
+          spellcheck="true"
+          type="search"
+        />
+      </div>
+      <button
+        aria-haspopup="true"
+        class="css-69cngj ub-fnt-fam_b77syt ub-mt_0px ub-fnt-sze_12px ub-f-wght_500 ub-ln-ht_32px ub-ltr-spc_0 ub-btrr_3px ub-bbrr_3px ub-btlr_3px ub-bblr_3px ub-pt_0px ub-pb_0px ub-pr_16px ub-pl_16px ub-ml_0px ub-mr_0px ub-mb_0px ub-h_32px ub-pst_relative ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-box-szg_border-box"
+        role="button"
+      >
+        Sorted by id
+      </button>
+      <label
+        class="ub-crsr_pointer ub-pst_relative ub-dspl_flex ub-mb_16px ub-mt_16px ub-box-szg_border-box"
+      >
+        <input
+          class="css-1bkiqpw ub-box-szg_border-box"
+          type="checkbox"
+          value=""
+        />
+        <div
+          class="ub-box-szg_border-box ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-dspl_flex ub-flx_none ub-algn-itms_center ub-just-cnt_center ub-w_16px ub-h_16px"
+        >
+          <svg
+            height="7"
+            viewBox="0 0 10 7"
+            width="10"
+          >
+            <path
+              d="M4 4.586L1.707 2.293A1 1 0 1 0 .293 3.707l3 3a.997.997 0 0 0 1.414 0l5-5A1 1 0 1 0 8.293.293L4 4.586z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </div>
+        <span
+          class="ub-color_425A70 ub-fnt-fam_b77syt ub-fnt-sze_12px ub-f-wght_400 ub-ln-ht_16px ub-ltr-spc_0 ub-ml_8px ub-box-szg_border-box"
+        >
+          reverse
+        </span>
+      </label>
+    </div>
     <ul
       class="css-nil ub-pb_0px ub-pl_0px ub-pr_0px ub-pt_0px ub-ls_iu2jf4 ub-box-szg_border-box"
     >
