@@ -1,11 +1,14 @@
 import { AuthProvider } from '../hooks/use-auth'
+import { SortSearchProvider } from '../hooks/use-sort-search'
 
 import '../styles/index.css'
 
 function App({ Component, pageProps }) {
   return (
     <AuthProvider>
-      <Component {...pageProps} />
+      <SortSearchProvider>
+        <Component {...pageProps} />
+      </SortSearchProvider>
     </AuthProvider>
   )
 }

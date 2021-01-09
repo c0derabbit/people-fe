@@ -3,14 +3,28 @@
 exports[`Home page matches snapshot 1`] = `
 <DocumentFragment>
   <header
-    class="css-nil ub-bs_17bru36 ub-box-szg_border-box"
+    class="css-nil ub-bs_17bru36 ub-bg_11ev722 ub-pb_8px ub-pt_8px ub-pst_absolute ub-z-idx_2 ub-w_100vw ub-box-szg_border-box"
   >
-    yo
+    <div
+      class="css-nil ub-just-cnt_space-between ub-algn-itms_center ub-dspl_flex ub-max-w_1200px ub-ml_auto ub-mr_auto ub-pl_16px ub-pr_16px ub-box-szg_border-box"
+    >
+      <a
+        class="ub-mt_0px ub-mb_0px ub-fnt-sze_14px ub-f-wght_400 ub-txt-trns_uppercase ub-ln-ht_16px ub-ltr-spc_0-6px ub-fnt-fam_b77syt ub-color_234361 ub-txt-deco_none ub-box-szg_border-box"
+        href="/"
+        rel="noopener"
+      >
+        Peoplegraph
+      </a>
+      <button
+        class="css-69cngj ub-fnt-fam_b77syt ub-mt_0px ub-fnt-sze_12px ub-f-wght_500 ub-ln-ht_32px ub-ltr-spc_0 ub-btrr_3px ub-bbrr_3px ub-btlr_3px ub-bblr_3px ub-pt_0px ub-pb_0px ub-pr_16px ub-pl_16px ub-ml_0px ub-mr_0px ub-mb_0px ub-h_32px ub-pst_relative ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-box-szg_border-box"
+      >
+        Log out
+      </button>
+    </div>
   </header>
   <main
-    class="css-nil ub-box-szg_border-box"
+    class="css-nil ub-pl_16px ub-pr_16px ub-pb_70px ub-pt_70px ub-max-w_1200px ub-ml_auto ub-mr_auto ub-box-szg_border-box"
   >
-    not signed in yet
     <select>
       <option
         value="id"
@@ -24,7 +38,9 @@ exports[`Home page matches snapshot 1`] = `
       />
       reverse
     </label>
-    <ul>
+    <ul
+      class="css-nil ub-pb_0px ub-pl_0px ub-pr_0px ub-pt_0px ub-ls_iu2jf4 ub-box-szg_border-box"
+    >
       <li>
         X. Y.
       </li>
