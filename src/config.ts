@@ -1,1 +1,1 @@
-export const apiUrl = 'https://people-api-2020.herokuapp.com/people/'
+export const apiBase = 'https://people-api-2020.herokuapp.com'

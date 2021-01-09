@@ -1,7 +1,7 @@
 import { NextPageContext } from 'next'
 import Link from 'next/link'
 
-import { apiUrl } from '../config'
+import { apiBase } from '../config'
 import { Card, Grid } from '../styled'
 
 export default function Page({ data }) {
@@ -37,7 +37,7 @@ export default function Page({ data }) {
 }
 
 export async function getServerSideProps(context: NextPageContext) {
-  const res = await fetch(`${apiUrl}/${context.query.id}`)
+  const res = await fetch(`${apiBase}/people/${context.query.id}`)
   const data = await res.json()
 
   return { props: { data } }

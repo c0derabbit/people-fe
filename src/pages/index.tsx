@@ -1,6 +1,6 @@
 import useAuth from '../hooks/use-auth'
 import useSortSearch from '../hooks/use-sort-search'
-import { apiUrl } from '../config'
+import { apiBase } from '../config'
 import { Button, Grid } from '../styled'
 import { PersonCard, SortSearchHeader } from '../components'
 import { Person } from '../types'
@@ -23,7 +23,7 @@ export const Home: React.FC<{ people: Person[] }> = ({ people = [] }) => {
 }
 
 export async function getServerSideProps() {
-  const data = await fetch(apiUrl)
+  const data = await fetch(`${apiBase}/people/`)
   const people = await data.json()
 
   return { props: { people } }
