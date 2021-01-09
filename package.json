@@ -26,9 +26,12 @@
     ]
   },
   "dependencies": {
+    "evergreen-ui": "^5.1.2",
+    "jwt-decode": "^3.1.2",
     "next": "latest",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-google-login": "^5.2.2"
   },
   "devDependencies": {
     "@testing-library/react": "^10.0.1",
@@ -49,5 +52,8 @@
     "next-page-tester": "^0.14.0",
     "prettier": "^2.0.2",
     "typescript": "^3.8.3"
+  },
+  "peerDependencies": {
+    "@babel/core": "7"
   }
 }

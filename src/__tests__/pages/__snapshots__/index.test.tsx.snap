@@ -2,31 +2,36 @@
 
 exports[`Home page matches snapshot 1`] = `
 <DocumentFragment>
-  <div>
-    <main>
-      <select>
-        <option
-          value="id"
-        >
-          id
-        </option>
-      </select>
-      <label>
-        <input
-          type="checkbox"
-        />
-        reverse
-      </label>
-      <ul>
-        <li>
-          X. Y.
-        </li>
-        <li>
-          Y. Z.
-        </li>
-      </ul>
-    </main>
-    <footer />
-  </div>
+  <header
+    class="css-nil ub-bs_17bru36 ub-box-szg_border-box"
+  >
+    yo
+  </header>
+  <main
+    class="css-nil ub-box-szg_border-box"
+  >
+    not signed in yet
+    <select>
+      <option
+        value="id"
+      >
+        id
+      </option>
+    </select>
+    <label>
+      <input
+        type="checkbox"
+      />
+      reverse
+    </label>
+    <ul>
+      <li>
+        X. Y.
+      </li>
+      <li>
+        Y. Z.
+      </li>
+    </ul>
+  </main>
 </DocumentFragment>
 `;

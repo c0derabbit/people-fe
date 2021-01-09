@@ -1,10 +1,14 @@
 import Head from 'next/head'
 import { useCallback, useEffect, useState } from 'react'
+import { Pane } from 'evergreen-ui'
 
 import by from '../helpers/sort-by'
+import useAuth from '../hooks/use-auth'
+import Header from '../components/header'
 import PersonCard, { Person } from '../components/person-card'
 
 export const Home: React.FC<{ people: Person[] }> = ({ people = [] }) => {
+  const { isSignedIn } = useAuth()
   const [reverse, setReverse] = useState(false)
   const [sorter, setSorter] = useState<string>('id')
   const [sortedPeople, setSortedPeople] = useState(
@@ -21,12 +25,14 @@ export const Home: React.FC<{ people: Person[] }> = ({ people = [] }) => {
   }, [sorter, reverse])
 
   return (
-    <div>
+    <>
       <Head>
         <title>People we know</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <Header />
+      <Pane is="main">
+        {isSignedIn ? 'signed in' : 'not signed in yet'}
         <select onChange={sort}>
           <option value="id">id</option>
         </select>
@@ -45,9 +51,8 @@ export const Home: React.FC<{ people: Person[] }> = ({ people = [] }) => {
             <PersonCard key={person.id} {...person} />
           ))}
         </ul>
-      </main>
-      <footer></footer>
-    </div>
+      </Pane>
+    </>
   )
 }
 
