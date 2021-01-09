@@ -9,6 +9,8 @@ export const Home: React.FC<{ people: Person[] }> = ({ people = [] }) => {
   const { isSignedIn, signIn } = useAuth()
   const { sort } = useSortSearch()
 
+  //console.log({ people })
+
   return isSignedIn
     ? (
       <>

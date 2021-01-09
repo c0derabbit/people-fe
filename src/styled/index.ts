@@ -47,6 +47,11 @@ export const Container = styled.div`
   padding: 0 ${gap}px;
 `
 
+export const Field = styled.input`
+  margin: ${gap}px 0;
+  border: 3px solid var(--primary);
+`
+
 export const Grid = styled.div<{ cols?: number }>`
   list-style: none;
   padding: 0;
