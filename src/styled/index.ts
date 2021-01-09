@@ -24,7 +24,8 @@ export const buttonlike = `
 export const Button = styled.button`
   background: var(--primary);
   border: none;
-  color: white;
+  color: white !important;
+  height: 27px;
   padding: ${gap / 4}px ${gap / 2}px;
   ${buttonlike}
 
@@ -48,8 +49,9 @@ export const Container = styled.div`
 `
 
 export const Field = styled.input`
-  margin: ${gap}px 0;
+  margin: ${gap / 3}px 0 ${gap}px;
   border: 3px solid var(--primary);
+  height: 36px;
 `
 
 export const Grid = styled.div<{ cols?: number }>`

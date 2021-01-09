@@ -2,6 +2,7 @@
   color: mediumslateblue;
   --primary: mediumslateblue;
   --primary-darker: #6e5dd6;
+  --primary-lighter: #bbb1f6;
   --light-accent: lavender;
   --lighter-accent: #f7f7fd;
 }

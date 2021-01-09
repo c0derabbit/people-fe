@@ -2,7 +2,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 
 import useAuth from '../hooks/use-auth'
-import { Button, Container } from '../styled'
+import { Button, Container, gap } from '../styled'
 
 export default function Header() {
   const { isSignedIn, signOut } = useAuth()
@@ -14,9 +14,14 @@ export default function Header() {
           <Link href="/"><a>Peoplegraph</a></Link>
         </Title>
         {isSignedIn && (
-          <Button onClick={signOut}>
-            Log out
-          </Button>
+          <>
+            <Link href="/new">
+              <Button as="a">New</Button>
+            </Link>
+            <Button onClick={signOut} style={{ marginLeft: 'auto' }}>
+              Log out
+            </Button>
+          </>
         )}
       </Container>
     </StyledHeader>
@@ -29,7 +34,8 @@ const StyledHeader = styled.header`
   ${Container} {
     height: 44px;
     display: flex;
-    justify-content: space-between;
+    gap: ${gap}px;
+    justify-content: flex-start;
     align-items: center;
   }
 `

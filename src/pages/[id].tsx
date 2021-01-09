@@ -2,10 +2,11 @@ import { NextPageContext } from 'next'
 import Link from 'next/link'
 
 import { apiBase } from '../config'
-import { Card, Grid } from '../styled'
+import { Button, Card, Grid } from '../styled'
 
-export default function Page({ data }) {
+export default function Profile({ data }) {
   const {
+    id,
     props: { name, ...rest },
     outgoing_edges,
   } = data
@@ -13,11 +14,14 @@ export default function Page({ data }) {
   return (
     <>
       <h2>{name}</h2>
+      <Link href={`/edit/${id}`}>
+        <Button as="a">Edit</Button>
+      </Link>
       <dl>
         {Object.entries(rest).map(([key, value]) => (
           <div key={key}>
             <dt>{key}</dt>
-            <dd>{value}</dd>
+            <dd>{value || '—'}</dd>
           </div>
         ))}
       </dl>
