@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { Button, Pane } from 'evergreen-ui'
 
 import useAuth from '../hooks/use-auth'
 import useSortSearch from '../hooks/use-sort-search'
@@ -18,27 +17,20 @@ export const Home: React.FC<{ people: Person[] }> = ({ people = [] }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <Pane is="main" paddingX={gap} paddingY={70} {...pageWidth}>
+      <main>
         {isSignedIn
           ? (
             <>
               <SortSearchHeader />
-              <Pane
-                is="ul"
-                padding={0}
-                listStyle="none"
-                display="grid"
-                gap={20}
-                gridTemplateColumns="repeat(3, 1fr)"
-              >
+              <div>
                 {sort(people).map((person: Person) => (
                   <PersonCard key={person.id} {...person} />
                 ))}
-              </Pane>
+              </div>
             </>
-          ) : <Button onClick={signIn}>Sign in</Button>
+          ) : <button onClick={signIn}>Sign in</button>
         }
-      </Pane>
+      </main>
     </>
   )
 }
