@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import uniqBy from '../helpers/uniq-by'
 import { apiBase } from '../config'
 import { Button, Card, Grid, gap } from '../styled'
+import invertRelationship from '../helpers/invert-relationship'
 
 export default function Profile({ data }) {
   const {
@@ -13,7 +14,7 @@ export default function Profile({ data }) {
     edges,
   } = data
   
-  const relationships = uniqBy([...edges.out, ...edges.in], 'id')
+  const relationships = uniqBy([...edges.out, ...edges.in.map(invertRelationship)], 'id')
 
   return (
     <>
