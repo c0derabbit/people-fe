@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const shadow = '5px 4px 0 0 var(--light-accent)'
 export const shadowHover = '3px 2px 0 0 var(--light-accent)'
+export const shadowLg = '0 2px 0 0 var(--light-grey)'
 export const gap = 16
 export const pageSize = 1200
 export const screen = {

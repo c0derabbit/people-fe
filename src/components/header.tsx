@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import useAuth from '../hooks/use-auth'
 import useSortSearch from '../hooks/use-sort-search'
-import { Button, Container, gap } from '../styled'
+import { Button, Container, gap, shadowLg } from '../styled'
 
 export default function Header() {
   const { isSignedIn, signOut } = useAuth()
@@ -36,6 +36,15 @@ export default function Header() {
 
 const StyledHeader = styled.header`
   border-bottom: 3px solid;
+  position: fixed;
+  width: 100%;
+  box-shadow: ${shadowLg};
+  background: white;
+  z-index: 999;
+
+  + * {
+    padding-top: 60px;
+  }
 
   ${Container} {
     height: 44px;

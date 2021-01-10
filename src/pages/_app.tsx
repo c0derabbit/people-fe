@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
     --primary-lighter: #bbb1f6;
     --light-accent: lavender;
     --lighter-accent: #f7f7fd;
+    --light-grey: #f0f0fa;
 
     a {
       text-decoration: none;
