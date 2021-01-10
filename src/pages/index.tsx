@@ -1,22 +1,22 @@
 import useAuth from '../hooks/use-auth'
-import useSortSearch from '../hooks/use-sort-search'
+import useSearch from '../hooks/use-search'
 import { apiBase } from '../config'
 import { Button, Grid } from '../styled'
-import { PersonCard, SortSearchHeader } from '../components'
+import { PersonCard, SearchHeader } from '../components'
 import { Person } from '../types'
 
 export const Home: React.FC<{ people: Person[] }> = ({ people = [] }) => {
   const { isSignedIn, signIn } = useAuth()
-  const { sort, filter } = useSortSearch()
+  const { search } = useSearch()
 
   console.log({ people })
 
   return isSignedIn
     ? (
       <>
-        <SortSearchHeader />
+        <SearchHeader />
         <Grid as="ul">
-          {sort(filter(people))?.map((person: Person) => (
+          {search(people)?.map((person: Person) => (
             <PersonCard key={person.id} {...person} />
           ))}
         </Grid>

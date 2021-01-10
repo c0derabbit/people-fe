@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import { NextPageContext } from 'next'
 import Link from 'next/link'
 import styled from 'styled-components'
 
 import uniqBy from '../helpers/uniq-by'
 import { apiBase } from '../config'
+import { ConfirmDelete } from '../components'
 import { Button, Card, Grid, gap } from '../styled'
 import invertRelationship from '../helpers/invert-relationship'
 
@@ -15,6 +17,8 @@ export default function Profile({ data }) {
   } = data
   
   const relationships = uniqBy([...edges.out, ...edges.in.map(invertRelationship)], 'id')
+
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false)
 
   return (
     <>
@@ -43,8 +47,23 @@ export default function Profile({ data }) {
         ))}
       </Grid>
       <Link href={`/connections/${id}`}>
-        <Button as="a">Add connection</Button>
+        <Button as="a">Add or edit connections</Button>
       </Link>
+      <p style={{ position: 'relative' }}>
+        <Button
+          onClick={() => setShowConfirmDelete(true)}
+          intent="danger"
+        >
+          Delete
+
+        </Button>
+        {showConfirmDelete && (
+          <ConfirmDelete
+            id={id}
+            hide={() => setShowConfirmDelete(false)}
+          />
+        )}
+      </p>
     </>
   )
 }

@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styled, { createGlobalStyle } from 'styled-components'
 
 import { AuthProvider } from '../hooks/use-auth'
-import { SortSearchProvider } from '../hooks/use-sort-search'
+import { SearchProvider } from '../hooks/use-search'
 
 import { Header } from '../components'
 import { Container } from '../styled'
@@ -18,6 +18,8 @@ const GlobalStyle = createGlobalStyle`
     --light-accent: lavender;
     --lighter-accent: #f7f7fd;
     --light-grey: #f0f0fa;
+    --danger: crimson;
+    --danger-hover: firebrick;
 
     a {
       text-decoration: none;
@@ -29,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
 function App({ Component, pageProps }) {
   return (
     <AuthProvider>
-      <SortSearchProvider>
+      <SearchProvider>
         <Head>
           <title>Peoplegraph</title>
           <link rel="icon" href="/favicon.ico" />
@@ -39,7 +41,7 @@ function App({ Component, pageProps }) {
         <Main>
           <Component {...pageProps} />
         </Main>
-      </SortSearchProvider>
+      </SearchProvider>
     </AuthProvider>
   )
 }

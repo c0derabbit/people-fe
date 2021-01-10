@@ -22,17 +22,17 @@ export const buttonlike = `
   }
 `
 
-export const Button = styled.button`
-  background: var(--primary);
+export const Button = styled.button<{ intent?: string }>`
+  background: var(--${props => props.intent || 'primary'});
   border: none;
   color: white !important;
   height: 27px;
-  padding: ${gap / 4}px ${gap / 2}px;
+  padding: ${gap / 4}px ${gap}px;
   ${buttonlike}
 
   &:hover,
   &:focus {
-    background: var(--primary-darker);
+    background: var(--${props => props.intent ? props.intent + '-hover' : 'primary-darker'});
   }
 `
 
@@ -65,6 +65,20 @@ export const Grid = styled.div<{ cols?: number }>`
   @media (min-width: ${screen.md}px) {
     grid-template-columns: repeat(${({cols}) => cols || 3}, 1fr);
   }
+`
+
+export const Popup = styled.div`
+  position: absolute;
+  bottom: calc(100% - 3px);
+  left: -10px;
+  border: 4px double var(--primary-darker);
+  background: white;
+  color: var(--primary);
+  min-width: 300px;
+  min-height: 100px;
+  text-align: left;
+  padding: ${gap / 2}px;
+  box-shadow: 4px 4px 0 0 var(--primary-lighter);
 `
 
 export default {}

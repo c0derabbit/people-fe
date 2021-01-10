@@ -2,12 +2,12 @@ import Link from 'next/link'
 import styled from 'styled-components'
 
 import useAuth from '../hooks/use-auth'
-import useSortSearch from '../hooks/use-sort-search'
+import useSearch from '../hooks/use-search'
 import { Button, Container, gap, shadowLg } from '../styled'
 
 export default function Header() {
   const { isSignedIn, signOut } = useAuth()
-  const { setSearch } = useSortSearch()
+  const { setSearch } = useSearch()
 
   return (
     <StyledHeader>

@@ -1,9 +1,11 @@
+import ConfirmDelete from './confirm-delete'
 import Header from './header'
 import PersonCard from './person-card'
-import SortSearchHeader from './sort-search-header'
+import SearchHeader from './search-header'
 
 export {
+  ConfirmDelete,
   Header,
   PersonCard,
-  SortSearchHeader,
+  SearchHeader,
 }

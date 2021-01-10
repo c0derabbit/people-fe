@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { NextPageContext } from 'next'
 
+import by from '../../helpers/sort-by'
 import { apiBase } from '../../config'
 import { Button, Field } from '../../styled'
 import { Person } from '../../types'
@@ -54,7 +55,7 @@ export default function AddConnection({ data, everyone }) {
       <h2>Update {name}’s connections</h2>
       <form onSubmit={sendForm}>
         <Field as="select" name="to">
-          {everyone.map(({ id, props }) => (
+          {everyone?.sort(by('props.name')).map(({ id, props }) => (
             <option value={id}>{props.name}</option>
           ))}
         </Field>
