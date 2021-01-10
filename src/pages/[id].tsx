@@ -27,7 +27,7 @@ export default function Profile({ data }) {
       </dl>
 
       <h3>Connections:</h3>
-      <Grid cols={4}>
+      <Grid cols={4} style={{ marginBottom: '1rem' }}>
         {outgoing_edges.map(({ id, name, type }) => (
           <Link key={id} href={`/${id}`}>
             <Card key={id} small>
@@ -36,6 +36,9 @@ export default function Profile({ data }) {
           </Link>
         ))}
       </Grid>
+      <Link href={`/connections/${id}`}>
+        <Button as="a">Add connection</Button>
+      </Link>
     </>
   )
 }
