@@ -1,14 +1,17 @@
 export interface Person {
   id: string;
   props: PersonProps;
-  outgoing_edges: OutgoingEdge[];
+  edges: {
+    in: Edge[];
+    out: Edge[];
+  }
 }
 
 interface PersonProps {
   name: string;
 }
 
-interface OutgoingEdge {
+interface Edge {
   id: string;
   type: string;
   name: string;

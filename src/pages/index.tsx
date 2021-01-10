@@ -9,7 +9,7 @@ export const Home: React.FC<{ people: Person[] }> = ({ people = [] }) => {
   const { isSignedIn, signIn } = useAuth()
   const { sort, filter } = useSortSearch()
 
-  //console.log({ people })
+  console.log({ people })
 
   return isSignedIn
     ? (

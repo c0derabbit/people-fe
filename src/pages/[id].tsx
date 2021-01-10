@@ -2,6 +2,7 @@ import { NextPageContext } from 'next'
 import Link from 'next/link'
 import styled from 'styled-components'
 
+import uniqBy from '../helpers/uniq-by'
 import { apiBase } from '../config'
 import { Button, Card, Grid, gap } from '../styled'
 
@@ -9,8 +10,10 @@ export default function Profile({ data }) {
   const {
     id,
     props: { name, 'full name': fullName, ...rest },
-    outgoing_edges,
+    edges,
   } = data
+  
+  const relationships = uniqBy([...edges.out, ...edges.in], 'id')
 
   return (
     <>
@@ -30,7 +33,7 @@ export default function Profile({ data }) {
 
       <h3>Connections:</h3>
       <Grid cols={4} style={{ marginBottom: '1rem' }}>
-        {outgoing_edges?.map(({ id, name, type }) => (
+        {relationships?.map(({ id, name, type }) => (
           <Link key={id} href={`/${id}`}>
             <Card key={id} small>
               <a>{name}</a> ({type})

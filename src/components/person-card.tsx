@@ -1,27 +1,32 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 
+import uniqBy from '../helpers/uniq-by'
 import { Card, gap } from '../styled'
 import { Person } from '../types'
 
 const PersonCard: React.FC<Person> = ({
   id,
   props: { name },
-  outgoing_edges: edges,
-}) => (
-  <Link href={`/${id}`}>
-    <Card as="li">
-      <a>
-        <Name>{name}</Name>
-          {edges?.map(({ id, type, name }) => (
-            <Link key={id} href={`/${id}`}>
-              <Connection>{name} ({type})</Connection>
-            </Link>
-          ))}
-      </a>
-    </Card>
-  </Link>
-)
+  edges,
+}) => {
+  const relationships = uniqBy([...edges.out, ...edges.in], 'id')
+
+  return (
+    <Link href={`/${id}`}>
+      <Card as="li">
+        <a>
+          <Name>{name}</Name>
+            {relationships.map(({ id, name }) => (
+              <Link key={id} href={`/${id}`}>
+                <Connection>{name}</Connection>
+              </Link>
+            ))}
+        </a>
+      </Card>
+    </Link>
+  )
+}
 
 const Connection = styled.a`
   margin-right: ${gap}px;

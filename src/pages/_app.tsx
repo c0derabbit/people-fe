@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 import { AuthProvider } from '../hooks/use-auth'
 import { SortSearchProvider } from '../hooks/use-sort-search'
@@ -35,12 +35,16 @@ function App({ Component, pageProps }) {
         </Head>
         <GlobalStyle />
         <Header />
-        <Container as="main">
+        <Main>
           <Component {...pageProps} />
-        </Container>
+        </Main>
       </SortSearchProvider>
     </AuthProvider>
   )
 }
+
+const Main = styled(Container).attrs(() => ({ as: 'main' }))`
+  margin-bottom: 2rem;
+`
 
 export default App
