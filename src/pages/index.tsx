@@ -16,7 +16,7 @@ export const Home: React.FC<{ people: Person[] }> = ({ people = [] }) => {
       <>
         <SortSearchHeader />
         <Grid as="ul">
-          {sort(filter(people)).map((person: Person) => (
+          {sort(filter(people))?.map((person: Person) => (
             <PersonCard key={person.id} {...person} />
           ))}
         </Grid>

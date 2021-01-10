@@ -18,7 +18,7 @@ export default function Profile({ data }) {
         <Button as="a">Edit</Button>
       </Link>
       <dl>
-        {Object.entries(rest).map(([key, value]) => (
+        {Object.entries(rest)?.map(([key, value]) => (
           <div key={key}>
             <dt>{key}</dt>
             <dd>{value || '—'}</dd>
@@ -28,7 +28,7 @@ export default function Profile({ data }) {
 
       <h3>Connections:</h3>
       <Grid cols={4} style={{ marginBottom: '1rem' }}>
-        {outgoing_edges.map(({ id, name, type }) => (
+        {outgoing_edges?.map(({ id, name, type }) => (
           <Link key={id} href={`/${id}`}>
             <Card key={id} small>
               <a>{name}</a> ({type})

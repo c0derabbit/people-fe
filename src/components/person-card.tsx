@@ -13,7 +13,7 @@ const PersonCard: React.FC<Person> = ({
     <Card as="li">
       <a>
         <Name>{name}</Name>
-          {edges.map(({ id, type, name }) => (
+          {edges?.map(({ id, type, name }) => (
             <Link key={id} href={`/${id}`}>
               <Connection>{name} ({type})</Connection>
             </Link>
