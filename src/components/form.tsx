@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
+import useRequest from '../hooks/use-request'
 import { apiBase } from '../config'
 import { Button, Field as FieldBase, gap, shadow } from '../styled'
 
@@ -24,26 +25,17 @@ export default function Form({ method = 'POST', id = '', ...props }) {
       properties,
     }
 
-    try {
-      const res = await fetch(
-        `${apiBase}/people/${id}`,
-        {
-          method,
-          body: JSON.stringify(body),
-          headers: { 'Content-Type': 'application/json' },
-        }
-      )
-      if (res.ok) {
-        setError(null)
-        setSuccess(`Person ${id ? 'updated' : 'added'} successfully. Yay! 🎉`)
-      } else {
-        setSuccess(null)
-        throw res.statusText
+    const { error, success } = await useRequest(
+      `${apiBase}/people/${id}`,
+      {
+        method,
+        body: JSON.stringify(body),
+        headers: { 'Content-Type': 'application/json' },
       }
-    } catch (error) {
-      setSuccess(null)
-      setError(`Something went wrong: ${error} 🙊`)
-    }
+    )
+
+    setError(error)
+    setSuccess(success)
   }
 
   function capitalise(str: string) {

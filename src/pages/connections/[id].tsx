@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { NextPageContext } from 'next'
 
 import by from '../../helpers/sort-by'
+import useRequest from '../../hooks/use-request'
 import { apiBase } from '../../config'
 import { Button, Field } from '../../styled'
 import { Person } from '../../types'
@@ -24,26 +25,17 @@ export default function AddConnection({ data, everyone }) {
 
     const body = { from: id, to, type }
 
-    try {
-      const res = await fetch(
-        `${apiBase}/relationships/`,
-        {
-          method: 'POST',
-          body: JSON.stringify(body),
-          headers: { 'Content-Type': 'application/json' },
-        }
-      )
-      if (res.ok) {
-        setError(null)
-        setSuccess(`Connected successfully. Yay! 🎉`)
-      } else {
-        setSuccess(null)
-        throw res.statusText
+    const { error, success } = await useRequest(
+      `${apiBase}/relationships/`,
+      {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: { 'Content-Type': 'application/json' },
       }
-    } catch (error) {
-      setSuccess(null)
-      setError(`Something went wrong: ${error} 🙊`)
-    }
+    )
+
+    setError(error)
+    setSuccess(success)
   }
 
   const {
