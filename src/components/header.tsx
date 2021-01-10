@@ -2,16 +2,22 @@ import Link from 'next/link'
 import styled from 'styled-components'
 
 import useAuth from '../hooks/use-auth'
+import useSortSearch from '../hooks/use-sort-search'
 import { Button, Container, gap } from '../styled'
 
 export default function Header() {
   const { isSignedIn, signOut } = useAuth()
+  const { setSearch } = useSortSearch()
 
   return (
     <StyledHeader>
       <Container>
         <Title>
-          <Link href="/"><a>Peoplegraph</a></Link>
+          <Link href="/">
+            <a onClick={() => { setSearch('') }}>
+              Peoplegraph
+            </a>
+          </Link>
         </Title>
         {isSignedIn && (
           <>
