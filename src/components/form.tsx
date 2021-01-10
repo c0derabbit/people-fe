@@ -54,6 +54,7 @@ export default function Form({ method = 'POST', id = '', ...props }) {
 
   const fields = [
     { name: 'name', required: true },
+    { name: 'full name' },
     { name: 'hobbies' },
     { name: 'by day' },
     { name: 'location' },

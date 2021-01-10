@@ -1,19 +1,21 @@
 import { NextPageContext } from 'next'
 import Link from 'next/link'
+import styled from 'styled-components'
 
 import { apiBase } from '../config'
-import { Button, Card, Grid } from '../styled'
+import { Button, Card, Grid, gap } from '../styled'
 
 export default function Profile({ data }) {
   const {
     id,
-    props: { name, ...rest },
+    props: { name, 'full name': fullName, ...rest },
     outgoing_edges,
   } = data
 
   return (
     <>
       <h2>{name}</h2>
+      {fullName && <FullName>{fullName}</FullName>}
       <Link href={`/edit/${id}`}>
         <Button as="a">Edit</Button>
       </Link>
@@ -42,6 +44,11 @@ export default function Profile({ data }) {
     </>
   )
 }
+
+const FullName = styled.small`
+  display: block;
+  margin-bottom: ${gap}px;
+`
 
 export async function getServerSideProps(context: NextPageContext) {
   const res = await fetch(`${apiBase}/people/${context.query.id}`)
