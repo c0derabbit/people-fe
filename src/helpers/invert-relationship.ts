@@ -14,5 +14,5 @@ export default function invertRelationship(person: Record<string, string>) {
     boyfriend: 'girlfriend',
   }
 
-  return { ...person, type: inverse[person.type] || person.type } 
+  return { ...person, type: inverse[person.type] || person.type }
 }

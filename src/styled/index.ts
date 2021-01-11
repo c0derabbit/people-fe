@@ -23,7 +23,7 @@ export const buttonlike = `
 `
 
 export const Button = styled.button<{ intent?: string }>`
-  background: var(--${props => props.intent || 'primary'});
+  background: var(--${(props) => props.intent || 'primary'});
   border: none;
   color: white !important;
   height: 27px;
@@ -32,7 +32,9 @@ export const Button = styled.button<{ intent?: string }>`
 
   &:hover,
   &:focus {
-    background: var(--${props => props.intent ? props.intent + '-hover' : 'primary-darker'});
+    background: var(
+      --${(props) => (props.intent ? props.intent + '-hover' : 'primary-darker')}
+    );
   }
 `
 
@@ -63,7 +65,7 @@ export const Grid = styled.div<{ cols?: number }>`
   gap: ${gap}px;
 
   @media (min-width: ${screen.md}px) {
-    grid-template-columns: repeat(${({cols}) => cols || 3}, 1fr);
+    grid-template-columns: repeat(${({ cols }) => cols || 3}, 1fr);
   }
 `
 

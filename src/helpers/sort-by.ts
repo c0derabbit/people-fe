@@ -22,7 +22,15 @@ export default function sortBy(key: string, { reverse }: SortOptions = {}) {
     }
 
     return reverse
-      ? aProp < bProp ? 1 : bProp < aProp ? -1 : 0
-      : aProp > bProp ? 1 : bProp > aProp ? -1 : 0
+      ? aProp < bProp
+        ? 1
+        : bProp < aProp
+        ? -1
+        : 0
+      : aProp > bProp
+      ? 1
+      : bProp > aProp
+      ? -1
+      : 0
   }
 }

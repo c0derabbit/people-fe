@@ -9,12 +9,14 @@ export const SearchProvider = ({ children }) => {
 
   const searchState = {
     setSearch,
-    search: (items: any[]) => [...items].filter(item => {
-      if (search === '') return true
+    search: (items: any[]) =>
+      [...items].filter((item) => {
+        if (search === '') return true
 
-      return Object.values(item.props)
-        .some((val: string) => (new RegExp(search, 'i')).test(val))
-    }),
+        return Object.values(item.props).some((val: string) =>
+          new RegExp(search, 'i').test(val)
+        )
+      }),
   }
 
   return (

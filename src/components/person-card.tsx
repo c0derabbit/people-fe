@@ -5,11 +5,7 @@ import uniqBy from '../helpers/uniq-by'
 import { Card, gap } from '../styled'
 import { Person } from '../types'
 
-const PersonCard: React.FC<Person> = ({
-  id,
-  props: { name },
-  edges,
-}) => {
+const PersonCard: React.FC<Person> = ({ id, props: { name }, edges }) => {
   const relationships = uniqBy([...edges.out, ...edges.in], 'id')
 
   return (
@@ -17,11 +13,11 @@ const PersonCard: React.FC<Person> = ({
       <Card as="li">
         <a>
           <Name>{name}</Name>
-            {relationships.map(({ id, name }) => (
-              <Link key={id} href={`/${id}`}>
-                <Connection>{name}</Connection>
-              </Link>
-            ))}
+          {relationships.map(({ id, name }) => (
+            <Link key={id} href={`/${id}`}>
+              <Connection>{name}</Connection>
+            </Link>
+          ))}
         </a>
       </Card>
     </Link>
@@ -30,7 +26,7 @@ const PersonCard: React.FC<Person> = ({
 
 const Connection = styled.a`
   margin-right: ${gap}px;
-  font-size: .9rem;
+  font-size: 0.9rem;
 
   &:hover,
   &:focus {

@@ -5,7 +5,9 @@ import Form from '../../components/form'
 import { apiBase } from '../../config'
 
 export default function Edit({ data }) {
-  const { query: { id } } = useRouter()
+  const {
+    query: { id },
+  } = useRouter()
 
   const {
     props: { name },

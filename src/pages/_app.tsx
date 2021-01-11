@@ -7,7 +7,7 @@ import { SearchProvider } from '../hooks/use-search'
 import { Header } from '../components'
 import { Container } from '../styled'
 
-import 'modern-normalize/modern-normalize.css';
+import 'modern-normalize/modern-normalize.css'
 
 const GlobalStyle = createGlobalStyle`
   :root {

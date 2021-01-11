@@ -1,3 +1,5 @@
 describe('useAuth', () => {
-  it('⚠️  TODO', () => { /* TODO */ })
+  it('⚠️  TODO', () => {
+    /* TODO */
+  })
 })

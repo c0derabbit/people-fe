@@ -1,11 +1,15 @@
 import { createContext, useContext, useState } from 'react'
-import { useGoogleLogin, useGoogleLogout, GoogleLoginResponse } from 'react-google-login'
+import {
+  useGoogleLogin,
+  useGoogleLogout,
+  GoogleLoginResponse,
+} from 'react-google-login'
 import jwt_decode from 'jwt-decode'
 
 interface AuthContext {
-  signIn?: () => void;
-  signOut?: () => void;
-  isSignedIn?: boolean;
+  signIn?: () => void
+  signOut?: () => void
+  isSignedIn?: boolean
 }
 
 const GoogleAuthContext = createContext<AuthContext>({})
@@ -20,9 +24,8 @@ const mockLocalStorage = {
 }
 
 export const AuthProvider = ({ children }) => {
-  const safeLocalStorage = typeof localStorage !== 'undefined'
-    ? localStorage
-    : mockLocalStorage
+  const safeLocalStorage =
+    typeof localStorage !== 'undefined' ? localStorage : mockLocalStorage
 
   const [isSignedIn, setIsSignedIn] = useState(isUserSignedIn())
 
@@ -42,13 +45,13 @@ export const AuthProvider = ({ children }) => {
   const { signIn } = useGoogleLogin({
     clientId: process.env.GOOGLE_SSO_CLIENT_ID,
     onSuccess: handleSignInSuccess,
-    onFailure: handleSignInFailure
+    onFailure: handleSignInFailure,
   })
 
   const { signOut } = useGoogleLogout({
     clientId: process.env.REACT_APP_GOOGLE_SSO_CLIENT_ID,
     onLogoutSuccess: handleSignOutSuccess,
-    onFailure: handleSignOutFailure
+    onFailure: handleSignOutFailure,
   })
 
   function handleSignInSuccess({ tokenId }: GoogleLoginResponse) {
@@ -64,8 +67,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  function handleSignInFailure() {
-  }
+  function handleSignInFailure() {}
 
   function handleSignOutSuccess() {
     safeLocalStorage.removeItem(tokenName)
@@ -74,8 +76,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  function handleSignOutFailure() {
-  }
+  function handleSignOutFailure() {}
 
   return (
     <GoogleAuthContext.Provider value={{ signIn, signOut, isSignedIn }}>

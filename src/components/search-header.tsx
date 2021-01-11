@@ -11,7 +11,7 @@ export default function SearchHeader() {
       <Field
         type="text"
         placeholder="Search…"
-        onChange={e => setSearch(e.target.value)}
+        onChange={(e) => setSearch(e.target.value)}
       />
     </Header>
   )

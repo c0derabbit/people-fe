@@ -34,7 +34,9 @@ describe('sortBy', () => {
     expect(first).toEqual(people[0])
     expect(second).toEqual(people[1])
 
-    const [firstReverse, secondReverse] = [...people].sort(by('foo', { reverse: true }))
+    const [firstReverse, secondReverse] = [...people].sort(
+      by('foo', { reverse: true })
+    )
 
     expect(firstReverse).toEqual(people[0])
     expect(secondReverse).toEqual(people[1])

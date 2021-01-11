@@ -15,8 +15,11 @@ export default function Profile({ data }) {
     props: { name, 'full name': fullName, ...rest },
     edges,
   } = data
-  
-  const relationships = uniqBy([...edges.out, ...edges.in.map(invertRelationship)], 'id')
+
+  const relationships = uniqBy(
+    [...edges.out, ...edges.in.map(invertRelationship)],
+    'id'
+  )
 
   const [showConfirmDelete, setShowConfirmDelete] = useState(false)
 
@@ -50,18 +53,11 @@ export default function Profile({ data }) {
         <Button as="a">Add or edit connections</Button>
       </Link>
       <p style={{ position: 'relative' }}>
-        <Button
-          onClick={() => setShowConfirmDelete(true)}
-          intent="danger"
-        >
+        <Button onClick={() => setShowConfirmDelete(true)} intent="danger">
           Delete
-
         </Button>
         {showConfirmDelete && (
-          <ConfirmDelete
-            id={id}
-            hide={() => setShowConfirmDelete(false)}
-          />
+          <ConfirmDelete id={id} hide={() => setShowConfirmDelete(false)} />
         )}
       </p>
     </>

@@ -7,7 +7,7 @@ describe('invertRelationship', () => {
   })
 
   it('returns same if no inverse found', () => {
-    const friend= { name: 'Mom', type: 'friend', id: 'foo' } as any
+    const friend = { name: 'Mom', type: 'friend', id: 'foo' } as any
     expect(invertRelationship(friend).type).toBe('friend')
   })
 })

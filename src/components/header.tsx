@@ -14,7 +14,11 @@ export default function Header() {
       <Container>
         <Title>
           <Link href="/">
-            <a onClick={() => { setSearch('') }}>
+            <a
+              onClick={() => {
+                setSearch('')
+              }}
+            >
               Peoplegraph
             </a>
           </Link>
@@ -59,6 +63,6 @@ const Title = styled.h1`
   margin: 0;
   font-size: 1.2rem;
   font-weight: 600;
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
   text-transform: uppercase;
 `
