@@ -1,5 +1,3 @@
-import Head from 'next/head'
-
 import useAuth from '../hooks/use-auth'
 import useSearch from '../hooks/use-search'
 import t from '../i18n'
@@ -14,9 +12,6 @@ export const Home: React.FC<{ people: Person[] }> = ({ people }) => {
 
   return isSignedIn ? (
     <>
-      <Head>
-        <title>{t('pageTitle')}</title>
-      </Head>
       <SearchHeader />
       <Grid as="ul">
         {search(people)?.map((person: Person) => (
