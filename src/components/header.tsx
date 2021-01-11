@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import useAuth from '../hooks/use-auth'
 import useSearch from '../hooks/use-search'
+import t from '../i18n'
 import { Button, Container, gap, shadowLg } from '../styled'
 
 export default function Header() {
@@ -19,17 +20,17 @@ export default function Header() {
                 setSearch('')
               }}
             >
-              Peoplegraph
+              {t('pageTitle')}
             </a>
           </Link>
         </Title>
         {isSignedIn && (
           <>
             <Link href="/new">
-              <Button as="a">New</Button>
+              <Button as="a">{t('newContact')}</Button>
             </Link>
             <Button onClick={signOut} style={{ marginLeft: 'auto' }}>
-              Log out
+              {t('signOut')}
             </Button>
           </>
         )}

@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import { NextPageContext } from 'next'
 import Head from 'next/head'
 
+import t from '../../i18n'
 import Form from '../../components/form'
 import { apiBase } from '../../config'
 
@@ -17,9 +18,11 @@ export default function Edit({ data }) {
   return (
     <>
       <Head>
-        <title>{name} | Peoplegraph</title>
+        <title>
+          {name} | {t('pageTitle')}
+        </title>
       </Head>
-      <h2>Update {name}</h2>
+      <h2>{name}</h2>
       <Form id={id} method="PUT" {...data.props} />
     </>
   )

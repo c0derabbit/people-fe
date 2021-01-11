@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 
+import t from '../i18n'
 import useRequest from '../hooks/use-request'
 import { apiBase } from '../config'
 import { Button, Popup } from '../styled'
@@ -27,12 +28,13 @@ export default function ConfirmDelete({ id, hide }: PopupInfo) {
 
   return (
     <Popup>
-      <Title>Are you sure?</Title>
+      <Title>{t('areYouSure')}</Title>
+      <p>{t('personWillBeDeleted')}</p>
       <Button onClick={hide} style={{ marginRight: '1rem' }}>
-        Um, no
+        {t('cancel')}
       </Button>
       <Button onClick={deletePerson} intent="danger">
-        YES!!!
+        {t('YES')}!!
       </Button>
       {error && (
         <p>

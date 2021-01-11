@@ -2,6 +2,7 @@ import Head from 'next/head'
 
 import useAuth from '../hooks/use-auth'
 import useSearch from '../hooks/use-search'
+import t from '../i18n'
 import { apiBase } from '../config'
 import { Button, Grid } from '../styled'
 import { PersonCard, SearchHeader } from '../components'
@@ -14,7 +15,7 @@ export const Home: React.FC<{ people: Person[] }> = ({ people }) => {
   return isSignedIn ? (
     <>
       <Head>
-        <title>Peoplegraph</title>
+        <title>{t('pageTitle')}</title>
       </Head>
       <SearchHeader />
       <Grid as="ul">
@@ -24,7 +25,7 @@ export const Home: React.FC<{ people: Person[] }> = ({ people }) => {
       </Grid>
     </>
   ) : (
-    <Button onClick={signIn}>Sign in</Button>
+    <Button onClick={signIn}>{t('signIn')}</Button>
   )
 }
 

@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 
+import t from '../i18n'
 import useRequest from '../hooks/use-request'
 import { apiBase } from '../config'
 import { Button, Field as FieldBase, gap, shadow } from '../styled'
@@ -18,6 +20,13 @@ export default function Form({
 }: FormProps) {
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if (success && id) router.push(`/${id}`)
+    // TODO redirect after create as well
+  }, [success])
 
   async function sendForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -45,17 +54,11 @@ export default function Form({
     setSuccess(success)
   }
 
-  function capitalise(str: string) {
-    if (str.length <= 1) return str.toUpperCase()
-
-    return str[0].toUpperCase() + str.slice(1)
-  }
-
   const fields = [
     { name: 'name', required: true },
     { name: 'full name' },
     { name: 'hobbies' },
-    { name: 'by day' },
+    { name: 'by day', placeholder: 'what do they do' },
     { name: 'location' },
     { name: 'last contact date', placeholder: 'dd/mm/yyyy' },
     { name: 'notes' },
@@ -65,18 +68,18 @@ export default function Form({
     <StyledForm onSubmit={sendForm}>
       {fields.map(({ name, required, placeholder }) => (
         <label key={name}>
-          {capitalise(name)}
+          {t(`props.${name}`)}
           <br />
           <Field
             type="text"
             name={name}
             required={required}
             defaultValue={props[name]}
-            placeholder={placeholder}
+            placeholder={t(placeholder)}
           />
         </label>
       ))}
-      <Button type="submit">{id ? 'Update' : 'Create'}</Button>
+      <Button type="submit">{t(id ? 'update' : 'create')}</Button>
       <p>
         {error && <strong>{error}</strong>}
         {success && <strong>{success}</strong>}

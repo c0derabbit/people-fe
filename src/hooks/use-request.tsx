@@ -1,3 +1,5 @@
+import t from '../i18n'
+
 export default async function useRequest(
   url: string,
   options: Record<string, any>
@@ -6,11 +8,11 @@ export default async function useRequest(
     const res = await fetch(url, options)
 
     if (res.ok) {
-      return { success: 'Success! 🎉`' }
+      return { success: `${t('success')}! 🎉` }
     } else {
-      return { error: res.statusText || 'Something went wrong. 🙊' }
+      return { error: res.statusText || `${t('error')}. 🙊` }
     }
   } catch (error) {
-    return { error: `Something went wrong: ${error} 🙊` }
+    return { error: `${t('error')}: ${error} 🙊` }
   }
 }
