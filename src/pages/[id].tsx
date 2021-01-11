@@ -23,6 +23,10 @@ export default function Profile({ data }) {
 
   const [showConfirmDelete, setShowConfirmDelete] = useState(false)
 
+  const hide = () => {
+    setShowConfirmDelete(false)
+  }
+
   return (
     <>
       <h2>{name}</h2>
@@ -56,9 +60,7 @@ export default function Profile({ data }) {
         <Button onClick={() => setShowConfirmDelete(true)} intent="danger">
           Delete
         </Button>
-        {showConfirmDelete && (
-          <ConfirmDelete id={id} hide={() => setShowConfirmDelete(false)} />
-        )}
+        {showConfirmDelete && <ConfirmDelete id={id} hide={hide} />}
       </p>
     </>
   )

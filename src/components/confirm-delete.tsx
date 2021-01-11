@@ -6,7 +6,12 @@ import useRequest from '../hooks/use-request'
 import { apiBase } from '../config'
 import { Button, Popup } from '../styled'
 
-export default function ConfirmDelete({ id, hide }) {
+interface PopupInfo {
+  id: string
+  hide: () => void
+}
+
+export default function ConfirmDelete({ id, hide }: PopupInfo) {
   const [error, setError] = useState<string | null>(null)
 
   const router = useRouter()
@@ -27,7 +32,7 @@ export default function ConfirmDelete({ id, hide }) {
         Um, no
       </Button>
       <Button onClick={deletePerson} intent="danger">
-        YES!
+        YES!!!
       </Button>
       {error && (
         <p>

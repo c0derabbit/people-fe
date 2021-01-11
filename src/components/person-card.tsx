@@ -5,7 +5,7 @@ import uniqBy from '../helpers/uniq-by'
 import { Card, gap } from '../styled'
 import { Person } from '../types'
 
-const PersonCard: React.FC<Person> = ({ id, props: { name }, edges }) => {
+export default function PersonCard({ id, props: { name }, edges }: Person) {
   const relationships = uniqBy([...edges.out, ...edges.in], 'id')
 
   return (
@@ -38,5 +38,3 @@ const Name = styled.h2`
   font-size: 1.2rem;
   margin-top: 0;
 `
-
-export default PersonCard

@@ -1,15 +1,15 @@
 import { createContext, useContext, useState } from 'react'
 
-type SearchProps = Record<string, any>
+import { Person } from '../types'
 
-const SearchContext = createContext<SearchProps>({})
+const SearchContext = createContext<Record<string, Function>>({})
 
 export const SearchProvider = ({ children }) => {
   const [search, setSearch] = useState('')
 
   const searchState = {
     setSearch,
-    search: (items: any[]) =>
+    search: (items: Person[]) =>
       [...items].filter((item) => {
         if (search === '') return true
 

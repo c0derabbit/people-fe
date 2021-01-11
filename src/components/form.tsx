@@ -5,7 +5,17 @@ import useRequest from '../hooks/use-request'
 import { apiBase } from '../config'
 import { Button, Field as FieldBase, gap, shadow } from '../styled'
 
-export default function Form({ method = 'POST', id = '', ...props }) {
+interface FormProps {
+  id?: string
+  method?: 'POST' | 'PUT' | 'PATCH'
+  [props: string]: string | number
+}
+
+export default function Form({
+  method = 'POST',
+  id = '',
+  ...props
+}: FormProps) {
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
 
