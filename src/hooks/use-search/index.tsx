@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 
-import { Person } from '../types'
+import { Person } from '../../types'
 
 const SearchContext = createContext<Record<string, Function>>({})
 

@@ -8,22 +8,14 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
-    "format": "prettier --write .",
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest",
     "test-all": "yarn lint && yarn type-check && yarn test"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn run type-check"
+      "pre-commit": "yarn lint --fix && yarn run type-check"
     }
-  },
-  "lint-staged": {
-    "*.@(ts|tsx)": [
-      "yarn lint",
-      "yarn format"
-    ]
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.12.0",
@@ -52,9 +44,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.2.3",
     "jest-watch-typeahead": "^0.5.0",
-    "lint-staged": "^10.0.10",
     "next-page-tester": "^0.14.0",
-    "prettier": "^2.0.2",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {

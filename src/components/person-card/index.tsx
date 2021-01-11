@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 
-import uniqBy from '../helpers/uniq-by'
-import { Card, gap } from '../styled'
-import { Person } from '../types'
+import uniqBy from '../../helpers/uniq-by'
+import { Card, gap } from '../../styled'
+import { Person } from '../../types'
 
 export default function PersonCard({ id, props: { name }, edges }: Person) {
   const relationships = uniqBy([...edges.out, ...edges.in], 'id')

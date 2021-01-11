@@ -1,10 +1,9 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 
-import useAuth from '../hooks/use-auth'
-import useSearch from '../hooks/use-search'
-import t from '../i18n'
-import { Button, Container, gap, shadowLg } from '../styled'
+import t from '../../i18n'
+import { Button, Container, gap, shadowLg } from '../../styled'
+import { useAuth, useSearch } from '../../hooks'
 
 export default function Header() {
   const { isSignedIn, signOut } = useAuth()

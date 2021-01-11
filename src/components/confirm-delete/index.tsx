@@ -2,10 +2,10 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 
-import t from '../i18n'
-import useRequest from '../hooks/use-request'
-import { apiBase } from '../config'
-import { Button, Popup } from '../styled'
+import t from '../../i18n'
+import { apiBase } from '../../config'
+import { useRequest } from '../../hooks'
+import { Button, Popup } from '../../styled'
 
 interface PopupInfo {
   id: string
