@@ -9,6 +9,8 @@ export interface Person {
 
 interface PersonProps {
   name: string
+  fullName?: string
+  [props: string]: string | number
 }
 
 interface Edge {

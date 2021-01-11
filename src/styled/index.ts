@@ -53,8 +53,10 @@ export const Container = styled.div`
 
 export const Field = styled.input`
   margin: ${gap / 3}px 0 ${gap}px;
+  padding: 0 4px;
   border: 3px solid var(--primary);
   height: 36px;
+  color: var(--primary);
 `
 
 export const Grid = styled.div<{ cols?: number }>`
