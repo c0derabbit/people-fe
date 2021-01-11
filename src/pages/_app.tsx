@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styled, { createGlobalStyle } from 'styled-components'
+import { PageTransition } from 'next-page-transitions'
 
 import { AuthProvider } from '../hooks/use-auth'
 import { SearchProvider } from '../hooks/use-search'
@@ -39,8 +40,30 @@ function App({ Component, pageProps }) {
         <GlobalStyle />
         <Header />
         <Main>
-          <Component {...pageProps} />
+          <PageTransition timeout={500} classNames="page-transition">
+            <Component {...pageProps} />
+          </PageTransition>
         </Main>
+        <style jsx global>{`
+          .page-transition-enter {
+            opacity: 0;
+            transform: translateY(16px);
+          }
+          .page-transition-enter-active {
+            opacity: 1;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: none;
+          }
+          .page-transition-exit {
+            opacity: 1;
+            transform: none;
+          }
+          .page-transition-exit-active {
+            opacity: 0;
+            transform: none;
+            transition: opacity 300ms;
+          }
+        `}</style>
       </SearchProvider>
     </AuthProvider>
   )

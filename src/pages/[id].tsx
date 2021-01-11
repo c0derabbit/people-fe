@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { NextPageContext } from 'next'
+import Head from 'next/head'
 import Link from 'next/link'
 import styled from 'styled-components'
 
@@ -29,6 +30,10 @@ export default function Profile({ data }) {
 
   return (
     <>
+      <Head>
+        <title>{name} | Peoplegraph</title>
+      </Head>
+
       <h2>{name}</h2>
       {fullName && <FullName>{fullName}</FullName>}
       <Link href={`/edit/${id}`}>
