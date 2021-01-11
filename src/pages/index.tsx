@@ -5,28 +5,33 @@ import { Button, Grid } from '../styled'
 import { PersonCard, SearchHeader } from '../components'
 import { Person } from '../types'
 
-export const Home: React.FC<{ people: Person[] }> = ({ people = [] }) => {
+export const Home: React.FC<{ people: Person[] }> = ({ people }) => {
   const { isSignedIn, signIn } = useAuth()
   const { search } = useSearch()
 
-  return isSignedIn
-    ? (
-      <>
-        <SearchHeader />
-        <Grid as="ul">
-          {search(people)?.map((person: Person) => (
-            <PersonCard key={person.id} {...person} />
-          ))}
-        </Grid>
-      </>
-    ) : <Button onClick={signIn}>Sign in</Button>
+  return isSignedIn ? (
+    <>
+      <SearchHeader />
+      <Grid as="ul">
+        {search(people)?.map((person: Person) => (
+          <PersonCard key={person.id} {...person} />
+        ))}
+      </Grid>
+    </>
+  ) : (
+    <Button onClick={signIn}>Sign in</Button>
+  )
 }
 
 export async function getServerSideProps() {
-  const data = await fetch(`${apiBase}/people/`)
-  const people = await data.json()
+  try {
+    const data = await fetch(`${apiBase}/people/`)
+    const people = await data.json()
 
-  return { props: { people } }
+    return { props: { people } }
+  } catch (error) {
+    return { notFound: true }
+  }
 }
 
 export default Home

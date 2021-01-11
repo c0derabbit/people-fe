@@ -26,7 +26,6 @@
     ]
   },
   "dependencies": {
-    "@types/styled-components": "^5.1.7",
     "babel-plugin-styled-components": "^1.12.0",
     "jwt-decode": "^3.1.2",
     "modern-normalize": "^1.0.0",
@@ -41,6 +40,7 @@
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.5",
     "@types/react": "^16.9.27",
+    "@types/styled-components": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",
     "babel-jest": "^25.2.3",

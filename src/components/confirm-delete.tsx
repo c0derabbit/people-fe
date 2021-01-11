@@ -11,11 +11,10 @@ export default function ConfirmDelete({ id, hide }) {
 
   const router = useRouter()
 
-  async function deletePerson(e) {
-    const { error, success } = await useRequest(
-      `${apiBase}/people/${id}`,
-      { method: 'DELETE' },
-    )
+  async function deletePerson() {
+    const { error, success } = await useRequest(`${apiBase}/people/${id}`, {
+      method: 'DELETE',
+    })
 
     if (success) router.push('/')
     setError(error)
@@ -30,12 +29,16 @@ export default function ConfirmDelete({ id, hide }) {
       <Button onClick={deletePerson} intent="danger">
         YES!
       </Button>
-      {error && <p><strong>{error}</strong></p>}
+      {error && (
+        <p>
+          <strong>{error}</strong>
+        </p>
+      )}
     </Popup>
   )
 }
 
 const Title = styled.strong`
   display: block;
-  margin: .5rem 0 1rem;
+  margin: 0.5rem 0 1rem;
 `

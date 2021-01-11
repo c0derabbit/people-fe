@@ -25,14 +25,11 @@ export default function Form({ method = 'POST', id = '', ...props }) {
       properties,
     }
 
-    const { error, success } = await useRequest(
-      `${apiBase}/people/${id}`,
-      {
-        method,
-        body: JSON.stringify(body),
-        headers: { 'Content-Type': 'application/json' },
-      }
-    )
+    const { error, success } = await useRequest(`${apiBase}/people/${id}`, {
+      method,
+      body: JSON.stringify(body),
+      headers: { 'Content-Type': 'application/json' },
+    })
 
     setError(error)
     setSuccess(success)
@@ -58,7 +55,8 @@ export default function Form({ method = 'POST', id = '', ...props }) {
     <StyledForm onSubmit={sendForm}>
       {fields.map(({ name, required, placeholder }) => (
         <label key={name}>
-          {capitalise(name)}<br />
+          {capitalise(name)}
+          <br />
           <Field
             type="text"
             name={name}
@@ -68,7 +66,7 @@ export default function Form({ method = 'POST', id = '', ...props }) {
           />
         </label>
       ))}
-      <Button type="submit">{!!id ? 'Update' : 'Create'}</Button>
+      <Button type="submit">{id ? 'Update' : 'Create'}</Button>
       <p>
         {error && <strong>{error}</strong>}
         {success && <strong>{success}</strong>}

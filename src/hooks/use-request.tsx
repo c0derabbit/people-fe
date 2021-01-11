@@ -1,9 +1,7 @@
 export default async function useRequest(
   url: string,
-  options: Record<string, any>,
+  options: Record<string, any>
 ) {
-  let res, error, success
-
   try {
     const res = await fetch(url, options)
 
