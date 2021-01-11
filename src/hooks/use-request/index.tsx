@@ -6,9 +6,10 @@ export default async function useRequest(
 ) {
   try {
     const res = await fetch(url, options)
+    const data = await res.json()
 
     if (res.ok) {
-      return { success: `${t('success')}! 🎉` }
+      return { success: `${t('success')}! 🎉`, data }
     } else {
       return { error: res.statusText || `${t('error')}. 🙊` }
     }

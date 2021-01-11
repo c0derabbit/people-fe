@@ -13,22 +13,34 @@ interface FormProps {
   [props: string]: string | number
 }
 
+interface FormState {
+  success?: string | null
+  data?: Record<string, any>
+  error?: string | null
+}
+
 export default function Form({
   method = 'POST',
   id = '',
   ...props
 }: FormProps) {
-  const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState<string | null>(null)
+  const [formState, setFormState] = useState<FormState>({})
+  const [submitting, setSubmitting] = useState(false)
 
   const router = useRouter()
 
   useEffect(() => {
-    if (success && id) router.push(`/${id}`)
-    // TODO redirect after create as well
-  }, [success])
+    const { success, data, error } = formState
+    if (success || error) {
+      setTimeout(() => { setSubmitting(false) }, 500)
+    }
+
+    const { id } = data || {}
+    if (id) router.push(`/${id}`)
+  }, [formState])
 
   async function sendForm(e: React.FormEvent<HTMLFormElement>) {
+    setSubmitting(true)
     e.preventDefault()
 
     const { elements } = e.target as any
@@ -44,14 +56,13 @@ export default function Form({
       properties,
     }
 
-    const { error, success } = await useRequest(`${apiBase}/people/${id}`, {
+    const { success, data, error } = await useRequest(`${apiBase}/people/${id}`, {
       method,
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' },
     })
 
-    setError(error)
-    setSuccess(success)
+    setFormState({ success, data, error })
   }
 
   const fields = [
@@ -63,6 +74,8 @@ export default function Form({
     { name: 'last contact date', placeholder: 'dd/mm/yyyy' },
     { name: 'notes' },
   ]
+
+  const { success, error } = formState
 
   return (
     <StyledForm onSubmit={sendForm}>
@@ -79,7 +92,9 @@ export default function Form({
           />
         </label>
       ))}
-      <Button type="submit">{t(id ? 'update' : 'create')}</Button>
+      <Button type="submit" disabled={submitting}>
+        {t(id ? 'update' : 'create')}
+      </Button>
       <p>
         {error && <strong>{error}</strong>}
         {success && <strong>{success}</strong>}

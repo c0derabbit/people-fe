@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import t from '../../i18n'
 import { apiBase } from '../../config'
-import { useRequest } from '../../hooks'
+import { useRequest, useSearch } from '../../hooks'
 import { Button, Popup } from '../../styled'
 
 interface PopupInfo {
@@ -14,7 +14,7 @@ interface PopupInfo {
 
 export default function ConfirmDelete({ id, hide }: PopupInfo) {
   const [error, setError] = useState<string | null>(null)
-
+  const { setSearch } = useSearch()
   const router = useRouter()
 
   async function deletePerson() {
@@ -22,8 +22,12 @@ export default function ConfirmDelete({ id, hide }: PopupInfo) {
       method: 'DELETE',
     })
 
-    if (success) router.push('/')
-    setError(error)
+    if (success) {
+      setSearch('')
+      router.push('/')
+    } else {
+      setError(error)
+    }
   }
 
   return (
