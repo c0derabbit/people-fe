@@ -1,8 +1,1 @@
-todo
-
-- [ ] google sso
-- [ ] use api key
-- [ ] prettify profile page
-- [ ] make 'add connection' searchable
-- [ ] i18n
-- [ ] fallback to previously cached data if heroku is not available
+**Peoplegraph** is a very simple directory where one can create and look up contacts, take notes about their work, hobbies, last contact date, and establish connections between them (e.g. Laura is Maria’s sister.)
