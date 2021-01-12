@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
       return decoded.exp > Date.now() / 1000 && isTokenValid
     }
 
-    return true//false
+    return false
   }
 
   const { signIn } = useGoogleLogin({
