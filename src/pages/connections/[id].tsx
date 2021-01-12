@@ -32,7 +32,7 @@ export default function AddConnection({ data, everyone }) {
 
     const body = { from: router.query.id, to, type }
 
-    const { error, success } = await useRequest(`${process.env.API_BASE}/relationships/`, {
+    const { error, success } = await useRequest(`/api/relationships`, {
       method: 'POST',
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' },
