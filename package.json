@@ -21,7 +21,7 @@
     "babel-plugin-styled-components": "^1.12.0",
     "jwt-decode": "^3.1.2",
     "modern-normalize": "^1.0.0",
-    "next": "latest",
+    "next": "^10.0.5",
     "next-page-transitions": "^1.0.0-beta.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -42,7 +42,7 @@
     "eslint-plugin-react": "^7.19.0",
     "husky": "^4.2.3",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^25.2.3",
+    "jest": "^26.6.3",
     "jest-watch-typeahead": "^0.5.0",
     "next-page-tester": "^0.14.0",
     "typescript": "^3.8.3"
