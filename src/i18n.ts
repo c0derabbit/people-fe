@@ -3,6 +3,7 @@
 
 const hu = {
   areYouSure: 'Biztos vagy benne?',
+  back: 'vissza',
   cancel: 'mégsem',
   create: 'mentés',
   createOrModifyConnection: 'Új kapcsolat / módosítás',

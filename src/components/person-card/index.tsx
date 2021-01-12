@@ -6,19 +6,17 @@ import { Card, gap } from '../../styled'
 import { Person } from '../../types'
 
 export default function PersonCard({ id, props: { name }, edges }: Person) {
-  const relationships = uniqBy([...edges.out, ...edges.in], 'id')
+  const connections = uniqBy([...edges.out, ...edges.in], 'id')
 
   return (
     <Link href={`/${id}`}>
       <Card as="li">
-        <a>
-          <Name>{name}</Name>
-          {relationships.map(({ id, name }) => (
-            <Link key={id} href={`/${id}`}>
-              <Connection>{name}</Connection>
-            </Link>
-          ))}
-        </a>
+        <Name>{name}</Name>
+        {connections.map(({ id, name }) => (
+          <Link key={id} href={`/${id}`}>
+            <Connection>{name}</Connection>
+          </Link>
+        ))}
       </Card>
     </Link>
   )
@@ -34,7 +32,9 @@ const Connection = styled.a`
   }
 `
 
-const Name = styled.h2`
-  font-size: 1.2rem;
-  margin-top: 0;
+const Name = styled.a`
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: ${gap}px;
 `

@@ -1,22 +1,26 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { NextPageContext } from 'next'
+import styled from 'styled-components'
 
 import by from '../../helpers/sort-by'
+import t from '../../i18n'
 import useRequest from '../../hooks/use-request'
 import { apiBase } from '../../config'
-import { Button, Field } from '../../styled'
+import { Button, Field, gap } from '../../styled'
 import { Person } from '../../types'
 
 type MessageState = string | null
 
 export default function AddConnection({ data, everyone }) {
-  const {
-    query: { id },
-  } = useRouter()
+  const router = useRouter()
 
   const [error, setError] = useState<MessageState>()
   const [success, setSuccess] = useState<MessageState>()
+
+  function goBack() {
+    router.back()
+  }
 
   async function sendForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -27,7 +31,7 @@ export default function AddConnection({ data, everyone }) {
       type: { value: type },
     } = elements
 
-    const body = { from: id, to, type }
+    const body = { from: router.query.id, to, type }
 
     const { error, success } = await useRequest(`${apiBase}/relationships/`, {
       method: 'POST',
@@ -46,7 +50,10 @@ export default function AddConnection({ data, everyone }) {
   return (
     <>
       <h2>Update {name}’s connections</h2>
-      <form onSubmit={sendForm}>
+      <Button onClick={goBack} intent="secondary">
+        {t('back')}
+      </Button>
+      <Form onSubmit={sendForm}>
         <Field as="select" name="to">
           {everyone?.sort(by('props.name')).map(({ id, props }) => (
             <option key={id} value={id}>
@@ -68,10 +75,14 @@ export default function AddConnection({ data, everyone }) {
           {error && <strong>{error}</strong>}
           {success && <strong>{success}</strong>}
         </p>
-      </form>
+      </Form>
     </>
   )
 }
+
+const Form = styled.form`
+  margin-top: ${gap * 2}px;
+`
 
 export async function getServerSideProps(context: NextPageContext) {
   const { id } = context.query

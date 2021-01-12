@@ -39,6 +39,10 @@ export default function Form({
     if (id) router.push(`/${id}`)
   }, [formState])
 
+  function goBack() {
+    router?.back()
+  }
+
   async function sendForm(e: React.FormEvent<HTMLFormElement>) {
     setSubmitting(true)
     e.preventDefault()
@@ -78,28 +82,33 @@ export default function Form({
   const { success, error } = formState
 
   return (
-    <StyledForm onSubmit={sendForm}>
-      {fields.map(({ name, required, placeholder }) => (
-        <label key={name}>
-          {t(`props.${name}`)}
-          <br />
-          <Field
-            type="text"
-            name={name}
-            required={required}
-            defaultValue={props[name]}
-            placeholder={t(placeholder)}
-          />
-        </label>
-      ))}
-      <Button type="submit" disabled={submitting}>
-        {t(id ? 'update' : 'create')}
+    <>
+      <Button onClick={goBack} intent="secondary">
+        {t('back')}
       </Button>
-      <p>
-        {error && <strong>{error}</strong>}
-        {success && <strong>{success}</strong>}
-      </p>
-    </StyledForm>
+      <StyledForm onSubmit={sendForm}>
+        {fields.map(({ name, required, placeholder }) => (
+          <label key={name}>
+            {t(`props.${name}`)}
+            <br />
+            <Field
+              type="text"
+              name={name}
+              required={required}
+              defaultValue={props[name]}
+              placeholder={t(placeholder)}
+            />
+          </label>
+        ))}
+        <Button type="submit" disabled={submitting}>
+          {t(id ? 'update' : 'create')}
+        </Button>
+        <p>
+          {error && <strong>{error}</strong>}
+          {success && <strong>{success}</strong>}
+        </p>
+      </StyledForm>
+    </>
   )
 }
 

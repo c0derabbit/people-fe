@@ -34,7 +34,7 @@ export default function ConfirmDelete({ id, hide }: PopupInfo) {
     <Popup>
       <Title>{t('areYouSure')}</Title>
       <p>{t('personWillBeDeleted')}</p>
-      <Button onClick={hide} style={{ marginRight: '1rem' }}>
+      <Button onClick={hide} intent="secondary" style={{ marginRight: '1rem' }}>
         {t('cancel')}
       </Button>
       <Button onClick={deletePerson} intent="danger">

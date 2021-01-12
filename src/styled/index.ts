@@ -59,6 +59,11 @@ export const Field = styled.input`
   color: var(--primary);
 `
 
+export const Flex = styled.div`
+  display: flex;
+  gap: ${gap}px;
+`
+
 export const Grid = styled.div<{ cols?: number }>`
   list-style: none;
   padding: 0;
@@ -73,7 +78,7 @@ export const Grid = styled.div<{ cols?: number }>`
 
 export const Popup = styled.div`
   position: absolute;
-  bottom: calc(100% - 3px);
+  top: calc(100% - 3px);
   left: -10px;
   border: 4px double var(--primary-darker);
   background: white;

@@ -4,7 +4,7 @@ interface SortOptions {
 
 type Prop = string | number | boolean
 
-export default function sortBy(key: string, { reverse }: SortOptions = {}) {
+export default function by(key: string, { reverse }: SortOptions = {}) {
   /* Sorter function that can handle sort keys two levels deep.
    * Example: myArray = [{ foo: { bar: 2 } }, { foo: { bar: 1 } }] can be sorted like:
    *   myArray.sort(by('foo.bar'))
