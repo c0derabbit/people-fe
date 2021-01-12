@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import styled from 'styled-components'
 
 import t from '../../i18n'
-import { apiBase } from '../../config'
 import { useRequest, useSearch } from '../../hooks'
 import { Button, Popup } from '../../styled'
 
@@ -18,7 +17,7 @@ export default function ConfirmDelete({ id, hide }: PopupInfo) {
   const router = useRouter()
 
   async function deletePerson() {
-    const { error, success } = await useRequest(`${apiBase}/people/${id}`, {
+    const { error, success } = await useRequest(`/api/people/${id}`, {
       method: 'DELETE',
     })
 

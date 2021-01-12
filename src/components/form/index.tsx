@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import styled from 'styled-components'
 
 import t from '../../i18n'
-import { apiBase } from '../../config'
 import { useRequest } from '../../hooks'
 import { Button, Field as FieldBase, gap, shadow } from '../../styled'
 
@@ -60,10 +59,9 @@ export default function Form({
       properties,
     }
 
-    const { success, data, error } = await useRequest(`${apiBase}/people/${id}`, {
+    const { success, data, error } = await useRequest(`/api/people${id ? `/${id}` : ''}`, {
       method,
       body: JSON.stringify(body),
-      headers: { 'Content-Type': 'application/json' },
     })
 
     setFormState({ success, data, error })

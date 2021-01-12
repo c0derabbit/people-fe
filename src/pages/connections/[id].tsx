@@ -6,9 +6,8 @@ import styled from 'styled-components'
 import by from '../../helpers/sort-by'
 import t from '../../i18n'
 import useRequest from '../../hooks/use-request'
-import { apiBase } from '../../config'
 import { Button, Field, gap } from '../../styled'
-import { Person } from '../../types'
+import type { Person } from '../../types'
 
 type MessageState = string | null
 
@@ -33,7 +32,7 @@ export default function AddConnection({ data, everyone }) {
 
     const body = { from: router.query.id, to, type }
 
-    const { error, success } = await useRequest(`${apiBase}/relationships/`, {
+    const { error, success } = await useRequest(`${process.env.API_BASE}/relationships/`, {
       method: 'POST',
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' },
@@ -85,13 +84,19 @@ const Form = styled.form`
 `
 
 export async function getServerSideProps(context: NextPageContext) {
-  const { id } = context.query
-  const everyoneRes = await fetch(`${apiBase}/people/`)
-  const res = await fetch(`${apiBase}/people/${context.query.id}`)
-  const everyone = (await everyoneRes.json()).filter(
-    (person: Person) => person.id !== id
-  )
-  const data = await res.json()
+  try {
+    const { id } = context.query
+    const everyoneRes = await fetch(`${process.env.API_BASE}/people/`)
+    const res = await fetch(`${process.env.API_BASE}/people/${context.query.id}`)
+    const everyone = (await everyoneRes.json()).filter(
+      (person: Person) => person.id !== id
+    )
+    const data = await res.json()
 
-  return { props: { data, everyone } }
+    if (!data.props) throw 'not found'
+
+    return { props: { data, everyone } }
+  } catch(error) {
+    return { notFound: true }
+  }
 }

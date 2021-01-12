@@ -6,9 +6,16 @@ export default async function useRequest(
 ) {
   try {
     const res = await fetch(url, options)
-    const data = await res.json()
 
     if (res.ok) {
+      let data: null | Record<string, any>
+
+      try {
+        data = await res.json()
+      } catch (error) {
+        // no body, just continue
+      }
+
       return { success: `${t('success')}! 🎉`, data }
     } else {
       return { error: res.statusText || `${t('error')}. 🙊` }
