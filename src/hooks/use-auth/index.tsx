@@ -38,18 +38,17 @@ export const AuthProvider = ({ children }) => {
       return decoded.exp > Date.now() / 1000 && isTokenValid
     }
 
-    // TODO return false
-    return true
+    return false
   }
 
   const { signIn } = useGoogleLogin({
-    clientId: process.env.GOOGLE_SSO_CLIENT_ID,
+    clientId: process.env.NEXT_PUBLIC_GOOGLE_SSO_CLIENT_ID,
     onSuccess: handleSignInSuccess,
     onFailure: handleSignInFailure,
   })
 
   const { signOut } = useGoogleLogout({
-    clientId: process.env.REACT_APP_GOOGLE_SSO_CLIENT_ID,
+    clientId: process.env.NEXT_PUBLIC_GOOGLE_SSO_CLIENT_ID,
     onLogoutSuccess: handleSignOutSuccess,
     onFailure: handleSignOutFailure,
   })

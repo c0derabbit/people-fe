@@ -6,7 +6,7 @@ import { Button, Container, gap, shadowLg } from '../../styled'
 import { useAuth, useSearch } from '../../hooks'
 
 export default function Header() {
-  const { isSignedIn, signOut } = useAuth()
+  const { signIn, isSignedIn, signOut } = useAuth()
   const { setSearch } = useSearch()
 
   return (
@@ -23,16 +23,18 @@ export default function Header() {
             </a>
           </Link>
         </Title>
-        {isSignedIn && (
-          <>
-            <Link href="/new">
-              <Button as="a">{t('newContact')}</Button>
-            </Link>
-            <Button onClick={signOut} style={{ marginLeft: 'auto' }}>
-              {t('signOut')}
-            </Button>
-          </>
-        )}
+        {isSignedIn
+          ? (
+            <>
+              <Link href="/new">
+                <Button as="a">{t('newContact')}</Button>
+              </Link>
+              <Button onClick={signOut} style={{ marginLeft: 'auto' }}>
+                {t('signOut')}
+              </Button>
+            </>
+          ) : <Button onClick={signIn}>{t('signIn')}</Button>
+        }
       </Container>
     </StyledHeader>
   )

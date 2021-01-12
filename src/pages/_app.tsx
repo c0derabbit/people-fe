@@ -44,6 +44,7 @@ function App({ Component, pageProps }) {
             <Component {...pageProps} />
           </PageTransition>
         </Main>
+
         <style jsx global>{`
           .page-transition-enter {
             opacity: 0;

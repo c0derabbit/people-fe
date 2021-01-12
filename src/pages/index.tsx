@@ -1,13 +1,12 @@
 import useAuth from '../hooks/use-auth'
 import useSearch from '../hooks/use-search'
-import t from '../i18n'
 import { apiBase } from '../config'
-import { Button, Grid } from '../styled'
+import { Grid } from '../styled'
 import { PersonCard, SearchHeader } from '../components'
 import { Person } from '../types'
 
 export const Home: React.FC<{ people: Person[] }> = ({ people }) => {
-  const { isSignedIn, signIn } = useAuth()
+  const { isSignedIn } = useAuth()
   const { search } = useSearch()
 
   return isSignedIn ? (
@@ -19,9 +18,7 @@ export const Home: React.FC<{ people: Person[] }> = ({ people }) => {
         ))}
       </Grid>
     </>
-  ) : (
-    <Button onClick={signIn}>{t('signIn')}</Button>
-  )
+  ) : <p style={{ fontSize: '64px' }}>🐕</p>
 }
 
 export async function getServerSideProps() {
