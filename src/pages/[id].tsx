@@ -7,16 +7,14 @@ import styled from 'styled-components'
 import t from '../i18n'
 import invertRelationship from '../helpers/invert-relationship'
 import uniqBy from '../helpers/uniq-by'
-import { apiBase } from '../config'
 import { ConfirmDelete } from '../components'
 import { Button, Card, Flex, Grid, gap } from '../styled'
+import type { Person } from '../types'
 
-export default function Profile({ data }) {
-  const {
-    id,
-    props: { name, 'full name': fullName, ...rest },
-    edges,
-  } = data
+// TODO fix this ugly typing
+const Profile: React.FC<{ data?: Person | any }> = ({ data }) => {
+  const { id, props = {}, edges = {} } = data
+  const { name, 'full name': fullName, ...rest } = props
 
   const relationships = uniqBy(
     [...edges.out, ...edges.in.map(invertRelationship)],
@@ -111,8 +109,16 @@ const Name = styled.h2`
 `
 
 export async function getServerSideProps(context: NextPageContext) {
-  const res = await fetch(`${apiBase}/people/${context.query.id}`)
-  const data = await res.json()
+  try {
+    const res = await fetch(`${process.env.API_BASE}/people/${context.query.id}`)
+    const data = await res.json()
 
-  return { props: { data } }
+    if (!data.props) throw 'not found'
+
+    return { props: { data } }
+  } catch (error) {
+    return { notFound: true }
+  }
 }
+
+export default Profile

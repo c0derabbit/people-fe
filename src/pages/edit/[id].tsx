@@ -4,7 +4,6 @@ import Head from 'next/head'
 
 import t from '../../i18n'
 import Form from '../../components/form'
-import { apiBase } from '../../config'
 
 export default function Edit({ data }) {
   const {
@@ -29,8 +28,14 @@ export default function Edit({ data }) {
 }
 
 export async function getServerSideProps(context: NextPageContext) {
-  const res = await fetch(`${apiBase}/people/${context.query.id}`)
-  const data = await res.json()
+  try {
+    const res = await fetch(`${process.env.API_BASE}/people/${context.query.id}`)
+    const data = await res.json()
 
-  return { props: { data } }
+    if (!data.props) throw 'not found'
+
+    return { props: { data } }
+  } catch(error) {
+    return { notFound: true }
+  }
 }

@@ -1,9 +1,8 @@
 import useAuth from '../hooks/use-auth'
 import useSearch from '../hooks/use-search'
-import { apiBase } from '../config'
 import { Grid } from '../styled'
 import { PersonCard, SearchHeader } from '../components'
-import { Person } from '../types'
+import type { Person } from '../types'
 
 export const Home: React.FC<{ people: Person[] }> = ({ people }) => {
   const { isSignedIn } = useAuth()
@@ -23,7 +22,7 @@ export const Home: React.FC<{ people: Person[] }> = ({ people }) => {
 
 export async function getServerSideProps() {
   try {
-    const data = await fetch(`${apiBase}/people/`)
+    const data = await fetch(`${process.env.API_BASE}/people/`)
     const people = await data.json()
 
     return { props: { people } }
