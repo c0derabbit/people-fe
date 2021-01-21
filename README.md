@@ -12,3 +12,7 @@ PG is written in TypeScript and Next.js.
 - improve test coverage
 - make connection select searchable, so it can handle a long list of people
 - fix some sloppy typings
+
+#### Note
+
+The BE runs on Heroku, so the dyno might take some time (or a refresh) to wake up.
